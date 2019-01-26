@@ -5,7 +5,7 @@ const tempOffset = 1;
 const stateTimeout = 30000;  //in ms to min time elapse to call for refresh
 const tempTimeout = 10000;  //in ms to min time elapse before next call for refresh
 const stateRefreshRate = 30000; // Interval for status update
-const fanState = {auto:1, quiet:15, low:25, medium:50, medium_high:75, high:100};
+const fanState = { auto:1, quiet:15, low:25, medium_low:35, medium:50, medium_high:75, high:100 };
 
 
 /*
@@ -391,9 +391,11 @@ function setFanLevel(that, value) {
 		if (value <= 5) {
 			that.state.fanLevel = "auto";
 		} else if (value <= fanState.quiet) {
-			that.state.fanLevel = "quiet"
+			that.state.fanLevel = "quiet";
 		} else if (value <= fanState.low) {
 			that.state.fanLevel = "low";
+		} else if (value <= fanState.mediem_low) {
+			that.state.fanLevel = "mediem_low";
 		} else if (value <= fanState.medium) {
 			that.state.fanLevel = "medium"
 		} else if (value <= fanState.medium_high) {
@@ -430,25 +432,33 @@ function autoAI (that) {
 
 	if (that.state.on) {
 		//that.log(that.name," - Auto calibratiing to minmizie difference between current and target: ",tempDiff,"%");
-		if (tempDiff >= 10.0) {
+		if (tempDiff >= 4.0) {
 			//that.state.on = true;
-			that.setFanLevel(that,100);
+			that.setFanLevel(that, fanState.high);
 			//that.log(that.name," - Setting to HIGH");
-		} else if (tempDiff >= 5.0) {
-			//that.state.on = true;
-			that.setFanLevel(that,100);
-			//that.log(that.name," - Setting to MEDIUM_HIGH");
 		} else if (tempDiff >= 3.0) {
 			//that.state.on = true;
-			that.setFanLevel(that,75);
+			that.setFanLevel(that, fanState.medium_high);
+			//that.log(that.name," - Setting to MEDIUM_HIGH");
+		} else if (tempDiff >= 2.0) {
+			//that.state.on = true;
+			that.setFanLevel(that,fanState.medium);
 			//that.log(that.name," - Setting to MEDIUM");
 		} else if (tempDiff >= 1.0) {
 			//that.state.on = true;
-			that.setFanLevel(that,25);
+			that.setFanLevel(that, fanState.medium_low);
+			//that.log(that.name," - Setting to MEDIUM_LOW");
+		} else if (tempDiff >= 0.75) {
+			//that.state.on = true;
+			that.setFanLevel(that, fanState.low);
 			//that.log(that.name," - Setting to LOW");
+		} else if (tempDiff >= 0.5) {
+			//that.state.on = true;
+			that.setFanLevel(that, fanState.quiet);
+			//that.log(that.name," - Setting to QUIET");
 		} else {
 			//that.state.on = true;
-			that.setFanLevel(that,0);
+			that.setFanLevel(that, fanState.auto);
 			//that.log(that.name," - Setting to AUTO");
 		}
 	}

@@ -1,0 +1,28 @@
+{
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true,
+    "jquery": true
+  },
+  "extends": "node",
+  "rules": {
+    "no-console": 0,
+    "no-unused-vars": 1,
+    "arrow-parens": 0,
+    "max-len":  0,
+    "import/newline-after-import": 0,
+    "import/no-commonjs": 0,
+    "import/no-nodejs-modules": 0,
+    "no-invalid-this": 0,
+    "arrow-body-style": 1,
+    "comma-dangle": [1, {
+      "arrays": "always-multiline",
+      "objects": "always-multiline",
+      "imports": "never",
+      "exports": "never",
+      "functions": "ignore"
+    }]
+  },
+  "plugins": ["html", "markdown"]
+}

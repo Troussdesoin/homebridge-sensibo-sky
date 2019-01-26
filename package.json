@@ -1,10 +1,10 @@
 {
-  "name": "homebridge-sensibo-sky",
-  "description": "HomeBridge plugin for Sensibo Sky",
-  "version": "0.4.4",
+  "name": "homebridge-sensibo-sky-7modes",
+  "description": "HomeBridge plugin for Sensibo Sky with 7 modes",
+  "version": "0.4.5",
   "repository": {
     "type": "git",
-    "url": "git://github.com/wailuen/homebridge-sensibo-sky.git"
+    "url": "https://github.com/noahfaust/homebridge-sensibo-sky.git"
   },
   "license": "ISC",
   "preferGlobal": true,
