@@ -1,10 +1,14 @@
-# homebridge-sensibo-sky
-[Homebridge](https://github.com/nfarina/homebridge) platform plugin for the Sensibo Sky
+# Homebridge Sensibo Sky 7 modes Plugin
+Based on [Homebridge](https://github.com/nfarina/homebridge) platform plugin for the Sensibo Sky
+Original plugin [homebridge-sensibo-sky](https://github.com/wailuen/homebridge-sensibo-sky)
+Forked from [homebridge-sensibo-sky by qkevinto](https://github.com/qkevinto/homebridge-sensibo-sky)
+
+This module manages all 7 possible modes available with some air conditioner: Quiet, Low, Medium Low, Medium, Medium High, High and Auto.
 
 # Installation
 
 1. Install homebridge using: npm install -g homebridge
-2. Install this plugin using: npm install -g homebridge-sensibo-sky
+2. Install this plugin using: npm install -g homebridge-sensibo-sky-7modes
 3. Update your configuration file. See sample config.json snippet below. 
 
 # Configuration
